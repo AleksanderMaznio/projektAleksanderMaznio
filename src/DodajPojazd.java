@@ -35,7 +35,6 @@ public class DodajPojazd {
             Osobowka nowaOsobowka = new Osobowka(a, b, c, d, e);
             listaOsobowek.add(nowaOsobowka);
 
-
             System.out.println("Dodano osobówkę!");
         }else if(wybor==2){
             System.out.print("Podaj ID: ");

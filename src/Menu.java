@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class Menu {
     public static void pokazmenu() {
+        OdczytZapis.wczytajPrzyUruchomieniu();
+        //OdczytZapis.wczytajPojazdy();
         Scanner scanner = new Scanner(System.in);
         boolean p = true; // zmienna sterująca pętlą
         int wybor;
@@ -12,7 +14,7 @@ public class Menu {
             System.out.println("1. Dodaj pojazd");
             System.out.println("2. Dodaj kierowcę");
             System.out.println("3. Usuń pojazd");
-            System.out.println("4. Usuń kierowcę");
+            System.out.println("4. wypisz z pliku");
             System.out.println("5. Wypisz pojazdy");
             System.out.println("6. Wypisz kierowców");
             System.out.println("7. Zakończ");
@@ -30,15 +32,18 @@ public class Menu {
                 case 1:
                     System.out.println("Dodawanie pojazdu...");
                     DodajPojazd.dodawanie();
+                    OdczytZapis.zapiszPojazdy();
                     break;
                 case 2:
                     System.out.println("Dodawanie kierowcy...");
+                    DodajKierowce.DodawanieOsob();
                     break;
                 case 3:
                     System.out.println("Usuwanie pojazdu...");
                     break;
                 case 4:
-                    System.out.println("Usuwanie kierowcy...");
+                    System.out.println("wypisywanie z pliku...");
+                    OdczytZapis.wczytajPojazdy();
                     break;
                 case 5:
                     System.out.println("Lista pojazdów:");
@@ -71,6 +76,9 @@ public class Menu {
                     break;
                 case 6:
                     System.out.println("Lista kierowców:");
+                    for (Kierowca k : DodajKierowce.listaKierowcow){
+                        System.out.println(k);
+                    }
                     break;
                 case 7:
                     System.out.println("Zamykanie programu...");
