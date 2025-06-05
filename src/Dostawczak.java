@@ -1,15 +1,15 @@
 public class Dostawczak extends Pojazd {
-    private double pojemność;
+    private float pojemność;
 
-    public double getPojemność() {
+    public float getPojemność() {
         return pojemność;
     }
 
-    public void setPojemność(double pojemność) {
+    public void setPojemność(float pojemność) {
         this.pojemność = pojemność;
     }
 
-    public Dostawczak( String marka, String model, int rokProdukcji, double pojemność) {
+    public Dostawczak( String marka, String model, int rokProdukcji, float pojemność) {
         super(marka, model, rokProdukcji);
         this.pojemność = pojemność;
     }

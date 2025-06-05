@@ -1,16 +1,20 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class OdczytZapis {
     private static final String NAZWA_PLIKU = "pojazdy.txt";
+
     private static final String TYP_OSOBOWKA = "OSOBOWKA";
     private static final String TYP_DOSTAWCZAK = "DOSTAWCZAK";
 
     // Zapis obu typów pojazdów
     public static void zapiszPojazdy() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(NAZWA_PLIKU))) {
+            Scanner scanner=new Scanner(NAZWA_PLIKU);
+            String linia=scanner.nextLine();
             // Zapisz osobowki
             if (DodajPojazd.listaOsobowek != null) {
                 for (Osobowka o : DodajPojazd.listaOsobowek) {
@@ -22,6 +26,7 @@ public class OdczytZapis {
                             o.getRokProdukcji(),
                             o.getLiczbaMiejsc()));
                 }
+
             }
 
             // Zapisz dostawczaki
@@ -34,6 +39,7 @@ public class OdczytZapis {
                             d.getModel(),
                             d.getRokProdukcji(),
                             d.getPojemność()));
+
                 }
             }
 
@@ -50,6 +56,7 @@ public class OdczytZapis {
     public static void wczytajPrzyUruchomieniu() {
         try {
             File plik = new File(NAZWA_PLIKU);
+
             if (!plik.exists()) {
                 System.out.println("Brak pliku danych - zostanie utworzony przy pierwszym zapisie");
                 return;
@@ -59,7 +66,7 @@ public class OdczytZapis {
                 while (scanner.hasNextLine()) {
                     String linia = scanner.nextLine().trim();
                     if (linia.isEmpty()) continue;
-
+                    linia = linia.replace(",", ".");
                     String[] dane = linia.split(";");
                     if (dane.length < 6) {
                         System.err.println("Nieprawidłowy format linii: " + linia);
@@ -69,6 +76,7 @@ public class OdczytZapis {
                     try {
                         switch (dane[0]) {
                             case TYP_OSOBOWKA:
+
                                 DodajPojazd.listaOsobowek.add(new Osobowka(
 
                                         dane[2],
@@ -78,12 +86,14 @@ public class OdczytZapis {
                                 ));
                                 break;
                             case TYP_DOSTAWCZAK:
+
+
                                 DodajPojazd.lisaDostawczakow.add(new Dostawczak(
 
                                         dane[2],
                                         dane[3],
                                         Integer.parseInt(dane[4]),
-                                        Double.parseDouble(dane[5])
+                                        Float.parseFloat(dane[5])
                                 ));
                                 break;
                             default:

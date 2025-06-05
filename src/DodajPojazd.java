@@ -46,7 +46,7 @@ public class DodajPojazd {
             int d = scanner.nextInt();
 
             System.out.println("Podaj ładowność: ");
-            double e = scanner.nextDouble();
+            float e = scanner.nextFloat();
 
             Dostawczak nowyDostawczak=new Dostawczak(b,c,d,e);
             lisaDostawczakow.add(nowyDostawczak);
