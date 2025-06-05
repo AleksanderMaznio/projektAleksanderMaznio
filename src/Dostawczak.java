@@ -9,8 +9,8 @@ public class Dostawczak extends Pojazd {
         this.pojemność = pojemność;
     }
 
-    public Dostawczak(int id, String marka, String model, int rokProdukcji, double pojemność) {
-        super(id, marka, model, rokProdukcji);
+    public Dostawczak( String marka, String model, int rokProdukcji, double pojemność) {
+        super(marka, model, rokProdukcji);
         this.pojemność = pojemność;
     }
 

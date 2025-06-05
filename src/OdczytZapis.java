@@ -70,7 +70,7 @@ public class OdczytZapis {
                         switch (dane[0]) {
                             case TYP_OSOBOWKA:
                                 DodajPojazd.listaOsobowek.add(new Osobowka(
-                                        Integer.parseInt(dane[1]),
+
                                         dane[2],
                                         dane[3],
                                         Integer.parseInt(dane[4]),
@@ -79,7 +79,7 @@ public class OdczytZapis {
                                 break;
                             case TYP_DOSTAWCZAK:
                                 DodajPojazd.lisaDostawczakow.add(new Dostawczak(
-                                        Integer.parseInt(dane[1]),
+
                                         dane[2],
                                         dane[3],
                                         Integer.parseInt(dane[4]),

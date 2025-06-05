@@ -9,8 +9,8 @@ public class Osobowka extends Pojazd {
         this.liczbaMiejsc = liczbaMiejsc;
     }
 
-    public Osobowka(int id, String marka, String model, int rokProdukcji, int liczbaMiejsc) {
-        super(id, marka, model, rokProdukcji);
+    public Osobowka(String marka, String model, int rokProdukcji, int liczbaMiejsc) {
+        super(marka, model, rokProdukcji);  // ID zostanie automatycznie przypisane
         this.liczbaMiejsc = liczbaMiejsc;
     }
 

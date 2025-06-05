@@ -1,11 +1,12 @@
 public abstract class Pojazd {
-    private int id;
+    private static int ostatnieId = 0;  // Statyczna zmienna przechowująca ostatnie ID
+    private final int id;               // Finalne ID dla każdego pojazdu
     private String marka;
     private String model;
     private int rokProdukcji;
 
-    public Pojazd(int id, String marka, String model, int rokProdukcji) {
-        this.id = id;
+    public Pojazd(String marka, String model, int rokProdukcji) {
+        this.id = ++ostatnieId;  // Autoinkrementacja przy każdym nowym obiekcie
         this.marka = marka;
         this.model = model;
         this.rokProdukcji = rokProdukcji;
@@ -30,9 +31,6 @@ public abstract class Pojazd {
         return marka;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setRokProdukcji(int rokProdukcji) {
         this.rokProdukcji = rokProdukcji;
@@ -53,5 +51,11 @@ public abstract class Pojazd {
                 " model: " + model +
                 " rokProdukcji " + rokProdukcji;
     }
+    public static void ustawOstatnieId(int id) {
+        if (id > ostatnieId) {
+            ostatnieId = id;
+        }
+    }
 }
+
 

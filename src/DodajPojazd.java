@@ -16,9 +16,6 @@ public class DodajPojazd {
         scanner.nextLine(); // <-- WYCZYŚĆ bufor po nextInt()
 
         if (wybor == 1) {
-            System.out.print("Podaj ID: ");
-            int a = scanner.nextInt();
-            scanner.nextLine(); // czyszczenie bufora
 
             System.out.print("Podaj markę: ");
             String b = scanner.nextLine();
@@ -32,14 +29,12 @@ public class DodajPojazd {
             System.out.print("Podaj liczbę miejsc: ");
             int e = scanner.nextInt();
 
-            Osobowka nowaOsobowka = new Osobowka(a, b, c, d, e);
+            Osobowka nowaOsobowka = new Osobowka( b, c, d, e);
             listaOsobowek.add(nowaOsobowka);
 
             System.out.println("Dodano osobówkę!");
         }else if(wybor==2){
-            System.out.print("Podaj ID: ");
-            int a = scanner.nextInt();
-            scanner.nextLine(); // czyszczenie bufora
+
 
             System.out.print("Podaj markę: ");
             String b = scanner.nextLine();
@@ -53,7 +48,7 @@ public class DodajPojazd {
             System.out.println("Podaj ładowność: ");
             double e = scanner.nextDouble();
 
-            Dostawczak nowyDostawczak=new Dostawczak(a,b,c,d,e);
+            Dostawczak nowyDostawczak=new Dostawczak(b,c,d,e);
             lisaDostawczakow.add(nowyDostawczak);
             System.out.println("Dodano dostawczak");
         }else {
