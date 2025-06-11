@@ -1,6 +1,6 @@
 public abstract class Pojazd {
     private static int ostatnieId = 0;  // Statyczna zmienna przechowująca ostatnie ID
-    private final int id;               // Finalne ID dla każdego pojazdu
+    private int id;               // Finalne ID dla każdego pojazdu
     private String marka;
     private String model;
     private int rokProdukcji;
@@ -42,6 +42,9 @@ public abstract class Pojazd {
 
     public void setMarka(String marka) {
         this.marka = marka;
+    }
+    public void setId(int id){
+        this.id = id;
     }
 
     @Override

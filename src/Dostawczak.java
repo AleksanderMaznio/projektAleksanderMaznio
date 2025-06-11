@@ -5,6 +5,7 @@ public class Dostawczak extends Pojazd {
         return pojemność;
     }
 
+
     public void setPojemność(float pojemność) {
         this.pojemność = pojemność;
     }

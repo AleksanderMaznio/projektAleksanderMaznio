@@ -12,19 +12,16 @@ public class Menu {
 
         while (p) {
             System.out.println("1. Dodaj pojazd");
-            System.out.println("2. Dodaj kierowcę");
-            System.out.println("3. Usuń pojazd");
-            System.out.println("4. wypisz z pliku");
-            System.out.println("5. Wypisz pojazdy");
-            System.out.println("6. Wypisz kierowców");
-            System.out.println("7. Zakończ");
+            System.out.println("2. Usuń pojazd");
+            System.out.println("3. wypisz listę pojazdów");
+            System.out.println("4. Edytuj pojazd");
+            System.out.println("5. Zakończ");
             System.out.print("Wybierz opcję: ");
 
             while (!scanner.hasNextInt()) {
                 System.out.print("To nie jest liczba. Spróbuj jeszcze raz: ");
                 scanner.next();
             }
-
             wybor = scanner.nextInt();
             scanner.nextLine(); // Dodane aby wyczyścić bufor
 
@@ -35,17 +32,11 @@ public class Menu {
                     OdczytZapis.zapiszPojazdy();
                     break;
                 case 2:
-                    System.out.println("Dodawanie kierowcy...");
-                    DodajKierowce.DodawanieOsob();
-                    break;
-                case 3:
                     System.out.println("Usuwanie pojazdu...");
+                    UsunPojazd.usuwanie();
                     break;
-                case 4:
-                    System.out.println("wypisywanie z pliku...");
-                    OdczytZapis.wczytajPojazdy();
-                    break;
-                case 5:
+
+                case 3:
                     System.out.println("Lista pojazdów:");
                     System.out.println("Wybierz pojazdy których listę chcesz zobaczyć");
                     System.out.println("1. Osobowki");
@@ -74,13 +65,10 @@ public class Menu {
                         System.out.println("Nieprawidłowy wybór!");
                     }
                     break;
-                case 6:
-                    System.out.println("Lista kierowców:");
-                    for (Kierowca k : DodajKierowce.listaKierowcow){
-                        System.out.println(k);
-                    }
+                case 4:
+                    EdytujPojazd.menuEdycji();
                     break;
-                case 7:
+                case 5:
                     System.out.println("Zamykanie programu...");
                     p = false;
                     break;
