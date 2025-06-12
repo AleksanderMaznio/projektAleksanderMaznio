@@ -1,6 +1,11 @@
 public class Osobowka extends Pojazd {
     private int liczbaMiejsc;
 
+    public Osobowka(String marka, String model, int rokProdukcji, int liczbaMiejsc) {
+        super(marka, model, rokProdukcji); // ID przypisuje nadklasa Pojazd
+        this.liczbaMiejsc = liczbaMiejsc;
+    }
+
     public int getLiczbaMiejsc() {
         return liczbaMiejsc;
     }
@@ -9,15 +14,8 @@ public class Osobowka extends Pojazd {
         this.liczbaMiejsc = liczbaMiejsc;
     }
 
-    public Osobowka(String marka, String model, int rokProdukcji, int liczbaMiejsc) {
-        super(marka, model, rokProdukcji);  // ID zostanie automatycznie przypisane
-        this.liczbaMiejsc = liczbaMiejsc;
-    }
-
     @Override
     public String toString() {
-        return super.toString()+" Liczba miejsc: " + liczbaMiejsc+"\n";
+        return super.toString() + "  Liczba miejsc: " + liczbaMiejsc;
     }
 }
-
-

@@ -1,23 +1,21 @@
 public class Dostawczak extends Pojazd {
-    private float pojemność;
+    private float ladownosc;
 
-    public float getPojemność() {
-        return pojemność;
-    }
-
-
-    public void setPojemność(float pojemność) {
-        this.pojemność = pojemność;
-    }
-
-    public Dostawczak( String marka, String model, int rokProdukcji, float pojemność) {
+    public Dostawczak(String marka, String model, int rokProdukcji, float ladownosc) {
         super(marka, model, rokProdukcji);
-        this.pojemność = pojemność;
+        this.ladownosc = ladownosc;
+    }
+
+    public float getLadownosc() {
+        return ladownosc;
+    }
+
+    public void setLadownosc(float ladownosc) {
+        this.ladownosc = ladownosc;
     }
 
     @Override
     public String toString() {
-        return super.toString()+ "Pojemność: " + pojemność;
+        return super.toString() + "  Ładowność: " + ladownosc;
     }
 }
-

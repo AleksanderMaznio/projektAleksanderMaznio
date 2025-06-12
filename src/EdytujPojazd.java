@@ -2,8 +2,15 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Scanner;
 
+/**
+ * Klasa służąca do edycji danych pojazdów (osobowych i dostawczych).
+ */
 public class EdytujPojazd {
 
+    /**
+     * Główne menu edycji pojazdów.
+     * Pozwala wybrać typ pojazdu do edycji lub powrócić do menu głównego.
+     */
     public static void menuEdycji() {
         Scanner scanner = new Scanner(System.in);
 
@@ -36,13 +43,17 @@ public class EdytujPojazd {
         }
     }
 
+    /**
+     * Edycja danych pojazdu typu osobówka.
+     *
+     * @throws IOException jeśli wystąpi problem z odczytem/zapisem pliku.
+     */
     private static void edytujOsobowke() throws IOException {
         if (DodajPojazd.listaOsobowek.isEmpty()) {
             System.out.println("\nBrak osobowek w bazie!");
             return;
         }
 
-        // Wyświetl listę do edycji
         System.out.println("\nLista osobowek:");
         for (int i = 0; i < DodajPojazd.listaOsobowek.size(); i++) {
             Osobowka o = DodajPojazd.listaOsobowek.get(i);
@@ -114,19 +125,23 @@ public class EdytujPojazd {
         System.out.println("\nPojazd został zaktualizowany!");
     }
 
+    /**
+     * Edycja danych pojazdu typu dostawczak.
+     *
+     * @throws IOException jeśli wystąpi problem z odczytem/zapisem pliku.
+     */
     private static void edytujDostawczaka() throws IOException {
         if (DodajPojazd.lisaDostawczakow.isEmpty()) {
             System.out.println("\nBrak dostawczaków w bazie!");
             return;
         }
 
-        // Wyświetl listę do edycji
         System.out.println("\nLista dostawczaków:");
         for (int i = 0; i < DodajPojazd.lisaDostawczakow.size(); i++) {
             Dostawczak d = DodajPojazd.lisaDostawczakow.get(i);
             System.out.printf("%d. ID: %d | %s %s (rocznik: %d, ładowność: %.2f)\n",
                     i + 1, d.getId(), d.getMarka(), d.getModel(),
-                    d.getRokProdukcji(), d.getPojemność());
+                    d.getRokProdukcji(), d.getLadownosc());
         }
 
         Scanner scanner = new Scanner(System.in);
@@ -173,13 +188,13 @@ public class EdytujPojazd {
         }
 
         // Edycja ładowności
-        System.out.print("Nowa ładowność [" + d.getPojemność() + "]: ");
+        System.out.print("Nowa ładowność [" + d.getLadownosc() + "]: ");
         String ladownoscInput = scanner.nextLine();
         if (!ladownoscInput.isEmpty()) {
             try {
                 float nowaLadownosc = Float.parseFloat(ladownoscInput.replace(",", "."));
                 if (nowaLadownosc >= 0) {
-                    d.setPojemność(nowaLadownosc);
+                    d.setLadownosc(nowaLadownosc);
                 } else {
                     System.out.println("Ładowność nie może być ujemna! Pozostawiono poprzednią wartość.");
                 }

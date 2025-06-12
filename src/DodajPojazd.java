@@ -2,22 +2,24 @@ import java.util.*;
 import java.io.IOException;
 
 public class DodajPojazd {
+    // Listy przechowujące pojazdy w pamięci
     static ArrayList<Osobowka> listaOsobowek = new ArrayList<>();
     static ArrayList<Dostawczak> lisaDostawczakow = new ArrayList<>();
 
+    // Metoda główna do dodawania pojazdów
     public static void dodawanie() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\n--- MENU DODAWANIA POJAZDU ---");
-        System.out.println("1. Dodaj osobowkę");
+        System.out.println("1. Dodaj osobówkę");
         System.out.println("2. Dodaj dostawczaka");
         System.out.print("Wybierz opcję: ");
 
         int wybor = scanner.nextInt();
-        scanner.nextLine(); // Wyczyść bufor
+        scanner.nextLine(); // Czyścimy bufor
 
         try {
-            // Odśwież dane z pliku przed dodaniem nowego pojazdu
+            // Wczytaj dane z pliku, aby zachować aktualność list
             OdczytZapis.wczytajPrzyUruchomieniu();
 
             if (wybor == 1) {
@@ -34,6 +36,7 @@ public class DodajPojazd {
         }
     }
 
+    // Dodaje nową osobówkę z walidacją danych
     private static void dodajOsobowke() throws IOException, PojazdException {
         Scanner scanner = new Scanner(System.in);
 
@@ -46,25 +49,25 @@ public class DodajPojazd {
         System.out.print("Podaj rocznik: ");
         int rocznik = scanner.nextInt();
         if (rocznik < 1900 || rocznik > Calendar.getInstance().get(Calendar.YEAR)) {
-            throw new ZlyRocznikException();
+            throw new ZlyRocznikException(); // walidacja rocznika
         }
 
         System.out.print("Podaj liczbę miejsc: ");
         int miejsca = scanner.nextInt();
         if (miejsca <= 0) {
-            throw new ZlaLiczbaMiejscException();
+            throw new ZlaLiczbaMiejscException(); // walidacja liczby miejsc
         }
 
-        // Utwórz nową osobowkę z unikalnym ID
+        // Tworzenie i dodanie nowej osobówki
         Osobowka nowa = new Osobowka(marka, model, rocznik, miejsca);
-        nowa.setId(OdczytZapis.getNoweId());
+        nowa.setId(OdczytZapis.getNoweId()); // unikalne ID
         listaOsobowek.add(nowa);
 
-        // Zapisz zmiany do pliku
         OdczytZapis.zapiszPojazdy();
-        System.out.printf("\nDodano osobowkę! ID: %d\n", nowa.getId());
+        System.out.printf("\nDodano osobówkę! ID: %d\n", nowa.getId());
     }
 
+    // Dodaje nowego dostawczaka z walidacją danych
     private static void dodajDostawczaka() throws IOException, PojazdException {
         Scanner scanner = new Scanner(System.in);
 
@@ -77,21 +80,20 @@ public class DodajPojazd {
         System.out.print("Podaj rocznik: ");
         int rocznik = scanner.nextInt();
         if (rocznik < 1900 || rocznik > Calendar.getInstance().get(Calendar.YEAR)) {
-            throw new ZlyRocznikException();
+            throw new ZlyRocznikException(); // walidacja rocznika
         }
 
         System.out.print("Podaj ładowność: ");
         float ladownosc = scanner.nextFloat();
         if (ladownosc < 0) {
-            throw new ZlaLadownoscException();
+            throw new ZlaLadownoscException(); // walidacja ładowności
         }
 
-        // Utwórz nowego dostawczaka z unikalnym ID
+        // Tworzenie i dodanie nowego dostawczaka
         Dostawczak nowy = new Dostawczak(marka, model, rocznik, ladownosc);
-        nowy.setId(OdczytZapis.getNoweId());
+        nowy.setId(OdczytZapis.getNoweId()); // unikalne ID
         lisaDostawczakow.add(nowy);
 
-        // Zapisz zmiany do pliku
         OdczytZapis.zapiszPojazdy();
         System.out.printf("\nDodano dostawczaka! ID: %d\n", nowy.getId());
     }
