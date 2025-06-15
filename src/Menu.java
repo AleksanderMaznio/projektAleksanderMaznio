@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void pokazmenu() {
+    public static void pokazMenu() {
         // Wczytanie danych przy uruchomieniu
         OdczytZapis.wczytajPrzyUruchomieniu();
 

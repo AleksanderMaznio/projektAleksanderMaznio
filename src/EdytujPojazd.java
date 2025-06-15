@@ -178,14 +178,14 @@ public class EdytujPojazd {
             try {
                 int nowyRocznik = Integer.parseInt(rocznikInput);
                 if (nowyRocznik >= 1900 && nowyRocznik <= Calendar.getInstance().get(Calendar.YEAR)) {
-                    d.setRokProdukcji(nowyRocznik);
-                } else {
-                    System.out.println("Nieprawidłowy rocznik! Pozostawiono poprzednią wartość.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Nieprawidłowy format roku! Pozostawiono poprzednią wartość.");
-            }
-        }
+                   d.setRokProdukcji(nowyRocznik);
+               } else {
+                   System.out.println("Nieprawidłowy rocznik! Pozostawiono poprzednią wartość.");
+               }
+           } catch (NumberFormatException e) {
+               System.out.println("Nieprawidłowy format roku! Pozostawiono poprzednią wartość.");
+           }
+       }
 
         // Edycja ładowności
         System.out.print("Nowa ładowność [" + d.getLadownosc() + "]: ");
