@@ -12,7 +12,7 @@ class ZlaLadownoscException extends PojazdException {
 
 class ZlyRocznikException extends PojazdException {
     public ZlyRocznikException() {
-        super("Rocznik musi być większy niż 1900 i nie większy niż aktualny rok!");
+        super("Rocznik musi być większy niż 1900 i nie większy niż aktualny rok lub nie może być literą!");
     }
 }
 

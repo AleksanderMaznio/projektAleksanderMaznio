@@ -47,7 +47,13 @@ public class DodajPojazd {
         String model = scanner.nextLine();
 
         System.out.print("Podaj rocznik: ");
-        int rocznik = scanner.nextInt();
+        int rocznik=0;
+        try {
+             rocznik = scanner.nextInt();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
         if (rocznik < 1900 || rocznik > Calendar.getInstance().get(Calendar.YEAR)) {
             throw new ZlyRocznikException(); // walidacja rocznika
         }
@@ -78,13 +84,24 @@ public class DodajPojazd {
         String model = scanner.nextLine();
 
         System.out.print("Podaj rocznik: ");
-        int rocznik = scanner.nextInt();
+        int rocznik=0;
+        try {
+            rocznik = scanner.nextInt();
+        }catch (Exception e){
+            e.getMessage();
+        }
+
         if (rocznik < 1900 || rocznik > Calendar.getInstance().get(Calendar.YEAR)) {
             throw new ZlyRocznikException(); // walidacja rocznika
         }
 
         System.out.print("Podaj ładowność: ");
-        float ladownosc = scanner.nextFloat();
+        float ladownosc = 0;
+        try {
+            ladownosc=scanner.nextFloat();
+        }catch (Exception e){
+            e.getMessage();
+        }
         if (ladownosc < 0) {
             throw new ZlaLadownoscException(); // walidacja ładowności
         }
