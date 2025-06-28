@@ -59,7 +59,12 @@ public class DodajPojazd {
         }
 
         System.out.print("Podaj liczbę miejsc: ");
-        int miejsca = scanner.nextInt();
+        int miejsca = 0;
+        try {
+            miejsca = scanner.nextInt();
+        }catch (Exception e){
+            e.getMessage();
+        }
         if (miejsca <= 0) {
             throw new ZlaLiczbaMiejscException(); // walidacja liczby miejsc
         }
@@ -96,15 +101,17 @@ public class DodajPojazd {
         }
 
         System.out.print("Podaj ładowność: ");
-        float ladownosc = 0;
+        float ladownosc;
+
         try {
-            ladownosc=scanner.nextFloat();
-        }catch (Exception e){
-            e.getMessage();
+            ladownosc = scanner.nextFloat();
+            if (ladownosc < 0) {
+                throw new ZlaLadownoscException(); // Ładowność nie może być ujemna
+            }
+        } catch (InputMismatchException e) {
+            throw new ZlaLadownoscException(); // Wpisano literę lub niepoprawny format
         }
-        if (ladownosc < 0) {
-            throw new ZlaLadownoscException(); // walidacja ładowności
-        }
+
 
         // Tworzenie i dodanie nowego dostawczaka
         Dostawczak nowy = new Dostawczak(marka, model, rocznik, ladownosc);

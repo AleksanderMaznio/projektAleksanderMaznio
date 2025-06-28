@@ -6,7 +6,7 @@ public class PojazdException extends Exception {
 
 class ZlaLadownoscException extends PojazdException {
     public ZlaLadownoscException() {
-        super("Ładowność nie może być mniejsza niż 0!");
+        super("Ładowność nie może być mniejsza niż 0 lub literą!");
     }
 }
 
@@ -18,6 +18,6 @@ class ZlyRocznikException extends PojazdException {
 
 class ZlaLiczbaMiejscException extends PojazdException {
     public ZlaLiczbaMiejscException() {
-        super("Liczba miejsc musi być większa od 0!");
+        super("Liczba miejsc musi być większa od 0 lub nie może być literą!");
     }
 }
